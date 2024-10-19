@@ -9,6 +9,9 @@
 *.user
 *.userosscache
 *.sln.docstates
+config.php
+config_local.php
+config_remote.php
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

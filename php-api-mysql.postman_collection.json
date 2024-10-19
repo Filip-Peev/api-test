@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "22e55637-d0b8-496b-a6c4-ee75deecc1e4",
+		"name": "php-api-mysql",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "23539853"
+	},
+	"item": [
+		{
+			"name": "get names and mails",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}"
+			},
+			"response": []
+		},
+		{
+			"name": "add new name and mail",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Define a list of possible first and last names\r",
+							"const firstNames = [\"Alice\", \"Bob\", \"Charlie\", \"David\", \"Ella\", \"Frank\", \"Grace\", \"Hank\", \"Ivy\", \"Jack\"];\r",
+							"const lastNames = [\"Smith\", \"Johnson\", \"Brown\", \"Taylor\", \"Anderson\", \"Thomas\", \"Jackson\", \"White\", \"Harris\", \"Martin\"];\r",
+							"\r",
+							"// Function to select a random item from an array\r",
+							"function getRandomItem(array) {\r",
+							"    return array[Math.floor(Math.random() * array.length)];\r",
+							"}\r",
+							"\r",
+							"// Generate a random first and last name\r",
+							"const randomFirstName = getRandomItem(firstNames);\r",
+							"const randomLastName = getRandomItem(lastNames);\r",
+							"\r",
+							"// Set these values as environment or collection variables\r",
+							"pm.environment.set(\"firstName\", randomFirstName);\r",
+							"pm.environment.set(\"lastName\", randomLastName);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{firstName}}\",\r\n    \"email\": \"{{firstName}}@example.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}"
+			},
+			"response": []
+		},
+		{
+			"name": "delete random id",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomId = Math.floor(1 + Math.random() * 100);\r",
+							"pm.environment.set(\"randomId\", randomId);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}?id={{randomId}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{{randomId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://filip-peev.com/home/php-api-mysql/api.php",
+			"type": "string"
+		}
+	]
+}

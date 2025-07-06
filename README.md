@@ -1,12 +1,6 @@
-<br>
-
 ## Simple API responder with PHP and MySQL
 
-<br>
-
 Rename config.sample.php to config.php and edit it with your relevant data.
-
-<br>
 
 The following query will create the database, table, and add two example entries:
 ```sh
@@ -24,14 +18,8 @@ INSERT INTO users (name, email) VALUES ('John Doe', 'john@example.com');
 INSERT INTO users (name, email) VALUES ('Jane Smith', 'jane@example.com');
 ```
 
-<br>
-
 Use Postman to Import the commands from the JSON file.
 
-<br>
-
 Use the index.html to test the api from a Browser.
-
-<br>
 
 Test Online Here -> [ PHP Api Tester](https://filip-peev.com/php-api-mysql/index.html)

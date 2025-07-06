@@ -67,6 +67,13 @@
         .clear-button:hover {
             background-color: #c82333;
         }
+        .delete-all-button {
+            background-color: #dc3545; /* Red for clear/danger */
+            margin-top: 10px;
+        }
+        .delete-all-button:hover {
+            background-color: #c82333;
+        }
 
         /* --- Layout: Main Two Columns (Request Forms | Response Panel) --- */
         .content-sections {
@@ -246,6 +253,7 @@
                             <label for="deleteId">User ID to Delete:</label>
                             <input type="number" id="deleteId" placeholder="Enter user ID" required>
                             <button onclick="deleteUser()">Delete User</button>
+                            <button onclick="deleteAllUsers()" class="delete-all-button">Delete All Users</button>
                         </div>
                     </div>
                 </div>
@@ -389,6 +397,14 @@
             // For DELETE, ID is expected as a query parameter in your PHP API
             displayResponse(`Deleting user with ID: ${id}...`);
             makeRequest('DELETE', `?id=${id}`);
+        }
+
+        function deleteAllUsers() {
+            if (confirm("Are you sure you want to delete ALL users? This action cannot be undone.")) {
+                displayResponse("Deleting all users...");
+                // Send a DELETE request with a specific parameter to indicate 'all'
+                makeRequest('DELETE', '?action=deleteAll');
+            }
         }
     </script>
 </body>

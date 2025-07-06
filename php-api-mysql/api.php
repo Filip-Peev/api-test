@@ -98,7 +98,7 @@ switch ($method) {
         break;
 
     case 'DELETE':
-        // Delete a user
+        // Delete a user or all users
         if (isset($_GET['id'])) {
             $id = intval($_GET['id']);
             $sql = "DELETE FROM users WHERE id = $id";
@@ -112,9 +112,20 @@ switch ($method) {
                     "error" => "Error deleting record: " . $conn->error
                 ]);
             }
+        } elseif (isset($_GET['action']) && $_GET['action'] === 'deleteAll') { //
+            $sql = "TRUNCATE TABLE users"; //
+            if ($conn->query($sql) === TRUE) { //
+                echo json_encode([ //
+                    "message" => "All users deleted successfully." //
+                ]);
+            } else { //
+                echo json_encode([ //
+                    "error" => "Error deleting all records: " . $conn->error //
+                ]);
+            }
         } else {
             echo json_encode([
-                "error" => "No ID provided"
+                "error" => "No ID or valid action provided for deletion"
             ]);
         }
         break;

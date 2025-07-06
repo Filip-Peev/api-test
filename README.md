@@ -2,11 +2,11 @@
 
 ## Simple API responder with PHP and MySQL
 
-<br><br>
+<br>
 
 Rename config.sample.php to config.php and edit it with your relevant data.
 
-<br><br>
+<br>
 
 The following query will create the database, table, and add two example entries:
 ```sh
@@ -24,6 +24,10 @@ INSERT INTO users (name, email) VALUES ('John Doe', 'john@example.com');
 INSERT INTO users (name, email) VALUES ('Jane Smith', 'jane@example.com');
 ```
 
-<br><br>
+<br>
 
 Use Postman to Import the commands from the JSON file.
+
+<br>
+
+Use the index.html to test the api from a Browser.

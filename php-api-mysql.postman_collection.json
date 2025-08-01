@@ -141,7 +141,7 @@
 	"variable": [
 		{
 			"key": "baseURL",
-			"value": "https://filip-peev.com/home/php-api-mysql/api.php",
+			"value": "https://filip-peev.com/php-api-mysql/api.php",
 			"type": "string"
 		}
 	]

@@ -245,6 +245,16 @@ button:hover {
   animation: spin 1s ease-in-out infinite;
 }
 
+.btn-green {
+  background-color: #28a745 !important;
+  color: white;
+}
+
+.btn-green:hover {
+  background-color: #218838 !important; /* Darker green */
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
